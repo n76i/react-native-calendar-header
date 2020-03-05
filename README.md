@@ -5,8 +5,8 @@ We love this project, but currently we don’t have enough time to work on it. S
 
 
 # React Native Calendars ✨ 🗓️ 📆
-[![Version](https://img.shields.io/npm/v/react-native-calendars.svg)](https://www.npmjs.com/package/react-native-calendars)
-[![Build Status](https://travis-ci.org/wix/react-native-calendars.svg?branch=master)](https://travis-ci.org/wix/react-native-calendars)
+[![Version](https://img.shields.io/npm/v/react-native-calendar-header.svg)](https://www.npmjs.com/package/react-native-calendar-header)
+[![Build Status](https://travis-ci.org/wix/react-native-calendar-header.svg?branch=master)](https://travis-ci.org/wix/react-native-calendar-header)
 
 This module includes various customizable react native calendar components.
 
@@ -17,26 +17,26 @@ The package is both **Android** and **iOS** compatible.
 You can run example module by performing these steps:
 
 ```
-$ git clone git@github.com:wix/react-native-calendars.git
+$ git clone git@github.com:wix/react-native-calendar-header.git
 $ npm install
 $ react-native run-ios
 ```
 
 You can check example screens source code in [example module screens](https://github.com/wix-private/wix-react-native-calendar/tree/master/example/src/screens)
 
-This project is compatible with Expo/CRNA (without ejecting), and the examples have been [published on Expo](https://expo.io/@community/react-native-calendars-example)
+This project is compatible with Expo/CRNA (without ejecting), and the examples have been [published on Expo](https://expo.io/@community/react-native-calendar-header-example)
 
 ## Installation
 
 ```
-$ npm install --save react-native-calendars
+$ npm install --save react-native-calendar-header
 ```
 
 The solution is implemented in JavaScript so no native module linking is required.
 
 ## Usage
 
-`import {`[Calendar](#calendar), [CalendarList](#calendarlist), [Agenda](#agenda)`} from 'react-native-calendars';`
+`import {`[Calendar](#calendar), [CalendarList](#calendarlist), [Agenda](#agenda)`} from 'react-native-calendar-header';`
 
 All parameters for components are optional. By default the month of current local date will be displayed.
 
@@ -57,7 +57,7 @@ Parameters that require date types accept YYYY-MM-DD formated datestrings, JavaS
 Calendars can be localized by adding custom locales to `LocaleConfig` object:
 
 ```javascript
-import {LocaleConfig} from 'react-native-calendars';
+import {LocaleConfig} from 'react-native-calendar-header';
 
 LocaleConfig.locales['fr'] = {
   monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
@@ -305,11 +305,11 @@ The loading indicator next to month name will be displayed if `<Calendar />` has
 
 If you want to have complete control over calendar styles you can do it by overriding default style.js files. For example, if you want to override calendar header style first you have to find stylesheet id for this file:
 
-https://github.com/wix/react-native-calendars/blob/master/src/calendar/header/style.js#L4
+https://github.com/wix/react-native-calendar-header/blob/master/src/calendar/header/style.js#L4
 
 In this case it is 'stylesheet.calendar.header'. Next you can add overriding stylesheet to your theme with this id.
 
-https://github.com/wix/react-native-calendars/blob/master/example/src/screens/calendars.js#L56
+https://github.com/wix/react-native-calendar-header/blob/master/example/src/screens/calendars.js#L56
 
 ```javascript
 theme={{

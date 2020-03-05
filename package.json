@@ -1,35 +1,35 @@
 {
   "_args": [
     [
-      "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
+      "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
       "/Users/andrew/Desktop/inka-crm/CRMInka"
     ]
   ],
-  "_from": "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
-  "_id": "react-native-calendars@git+https://github.com/n76i/react-native-calendars.git#18ba8a30e3680cdf02af10abd96f867b01cec7f0",
+  "_from": "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
+  "_id": "react-native-calendar-header@git+https://github.com/n76i/react-native-calendar-header.git#18ba8a30e3680cdf02af10abd96f867b01cec7f0",
   "_inBundle": false,
   "_integrity": "",
-  "_location": "/react-native-calendars",
+  "_location": "/react-native-calendar-header",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
-    "rawSpec": "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
-    "saveSpec": "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
-    "fetchSpec": "https://github.com/n76i/react-native-calendars.git",
+    "raw": "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
+    "rawSpec": "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
+    "saveSpec": "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
+    "fetchSpec": "https://github.com/n76i/react-native-calendar-header.git",
     "gitCommittish": "1.212.0"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "git+https://github.com/n76i/react-native-calendars.git#18ba8a30e3680cdf02af10abd96f867b01cec7f0",
-  "_spec": "git+https://github.com/n76i/react-native-calendars.git#1.212.0",
+  "_resolved": "git+https://github.com/n76i/react-native-calendar-header.git#18ba8a30e3680cdf02af10abd96f867b01cec7f0",
+  "_spec": "git+https://github.com/n76i/react-native-calendar-header.git#1.212.0",
   "_where": "/Users/andrew/Desktop/inka-crm/CRMInka",
   "author": {
     "name": "Wix.com"
   },
   "bugs": {
-    "url": "https://github.com/wix/react-native-calendars/issues"
+    "url": "https://github.com/wix/react-native-calendar-header/issues"
   },
   "dependencies": {
     "lodash": "^4.0.0",
@@ -48,16 +48,16 @@
     "semver": "5.x.x",
     "shell-utils": "1.x.x"
   },
-  "homepage": "https://github.com/wix/react-native-calendars#readme",
+  "homepage": "https://github.com/wix/react-native-calendar-header#readme",
   "license": "MIT",
   "main": "src/index.js",
-  "name": "react-native-calendars",
+  "name": "react-native-calendar-header",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix/react-native-calendars.git"
+    "url": "git+https://github.com/wix/react-native-calendar-header.git"
   },
   "scripts": {
     "android": "react-native run-android",
