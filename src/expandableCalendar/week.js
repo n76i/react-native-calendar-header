@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
 
 import dateutils from '../dateutils';
-import {xdateToData, parseDate} from '../interface';
-import {SELECT_DATE_SLOT} from '../testIDs';
+import { xdateToData, parseDate } from '../interface';
+import { SELECT_DATE_SLOT } from '../testIDs';
 import styleConstructor from './style';
 
 import Day from '../calendar/day/basic';
@@ -14,6 +14,7 @@ import MultiDotDay from '../calendar/day/multi-dot';
 import MultiPeriodDay from '../calendar/day/multi-period';
 import SingleDay from '../calendar/day/custom';
 import Calendar from '../calendar';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const EmptyArray = [];
@@ -29,7 +30,7 @@ class Week extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.style = styleConstructor(props.theme);
   }
 
@@ -41,7 +42,7 @@ class Week extends Component {
       if (dayOfTheWeek < 0) { // to handle firstDay > 0
         dayOfTheWeek = 7 + dayOfTheWeek;
       }
-      
+
       let newDate = current;
       let index = dayOfTheWeek - 1;
       while (index >= 0) {
@@ -62,27 +63,27 @@ class Week extends Component {
   }
 
   getDayComponent() {
-    const {dayComponent} = this.props;
+    const { dayComponent } = this.props;
     if (dayComponent) {
       return dayComponent;
     }
 
     switch (this.props.markingType) {
-    case 'period':
-      return UnitDay;
-    case 'multi-dot':
-      return MultiDotDay;
-    case 'multi-period':
-      return MultiPeriodDay;
-    case 'custom':
-      return SingleDay;
-    default:
-      return Day;
+      case 'period':
+        return UnitDay;
+      case 'multi-dot':
+        return MultiDotDay;
+      case 'multi-period':
+        return MultiPeriodDay;
+      case 'custom':
+        return SingleDay;
+      default:
+        return Day;
     }
   }
 
   getDateMarking(day) {
-    const {markedDates} = this.props;
+    const { markedDates } = this.props;
 
     if (!markedDates) {
       return false;
@@ -101,10 +102,10 @@ class Week extends Component {
   // }
 
   renderDay(day, id) {
-    const {current} = this.props;
+    const { current } = this.props;
     const minDate = parseDate(this.props.minDate);
     const maxDate = parseDate(this.props.maxDate);
-    
+
     let state = '';
     if (this.props.disabledByDefault) {
       state = 'disabled';
@@ -119,7 +120,7 @@ class Week extends Component {
     // hide extra days
     if (current && this.props.hideExtraDays) {
       if (!dateutils.sameMonth(day, parseDate(current))) {
-        return (<View key={id} style={{flex: 1}}/>);
+        return (<View key={id} style={{ flex: 1 }} />);
       }
     }
 
@@ -128,7 +129,7 @@ class Week extends Component {
     const dateAsObject = xdateToData(day);
 
     return (
-      <View style={{flex: 1, alignItems: 'center'}} key={id}>
+      <View style={{ flex: 1, alignItems: 'center' }} key={id}>
         <DayComp
           testID={`${SELECT_DATE_SLOT}-${dateAsObject.dateString}`}
           state={state}
@@ -145,24 +146,29 @@ class Week extends Component {
   }
 
   render() {
-    const {current} = this.props;
+    const { current } = this.props;
     const dates = this.getWeek(current);
     const week = [];
-    
+
     if (dates) {
       dates.forEach((day, id) => {
         week.push(this.renderDay(day, id));
       }, this);
     }
-    
+
     // if (this.props.showWeekNumbers) {
     //   week.unshift(this.renderWeekNumber(item[item.length - 1].getWeek()));
     // }
 
     return (
-      <View style={this.style.container}>
-        <View style={[this.style.week, this.props.style]}>{week}</View>
-      </View>
+      <LinearGradient
+        colors={['rgb(0,135,193)', 'rgb(0,211,186)']}
+        start={{ x: 1, y: 0.5 }}
+        end={{ x: -0.2, y: 0.5 }}>
+        <View style={[this.style.container, { backgroundColor: '#00000000' }]}>
+          <View style={[this.style.week, this.props.style]}>{week}</View>
+        </View>
+      </LinearGradient>
     );
   }
 }

@@ -68,5 +68,5 @@
     "test": "jasmine src/*.spec.js && npm run lint",
     "xcode": "open ios/CalendarsExample.xcodeproj/"
   },
-  "version": "1.22.0"
+  "version": "1.22.1"
 }

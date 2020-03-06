@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-import {shouldUpdate} from '../../../component-updater';
+import { shouldUpdate } from '../../../component-updater';
 
 import styleConstructor from './style';
 
 class Day extends Component {
   static displayName = 'IGNORE';
-  
+
   static propTypes = {
     // TODO: disabled props should be removed
     state: PropTypes.oneOf(['disabled', 'today', '']),
@@ -49,10 +49,16 @@ class Day extends Component {
     if (marking.dots && Array.isArray(marking.dots) && marking.dots.length > 0) {
       // Filter out dots so that we we process only those items which have key and color property
       const validDots = marking.dots.filter(d => (d && d.color));
+
       return validDots.map((dot, index) => {
         return (
           <View key={dot.key ? dot.key : index} style={[baseDotStyle,
-            { backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color}]}/>
+            {
+              backgroundColor: marking.selected && dot.selectedDotColor ? '#0abde3' : dot.color,
+              width: marking.selected ? 2.5 : 4,
+              height: marking.selected ? 2.5 : 4,
+              borderRadius: marking.selected ? 1.25 : 2
+            }]} />
         );
       });
     }
@@ -70,7 +76,7 @@ class Day extends Component {
       containerStyle.push(this.style.selected);
       textStyle.push(this.style.selectedText);
       if (marking.selectedColor) {
-        containerStyle.push({backgroundColor: marking.selectedColor});
+        containerStyle.push({ backgroundColor: marking.selectedColor });
       }
     } else if (typeof marking.disabled !== 'undefined' ? marking.disabled : this.props.state === 'disabled') {
       textStyle.push(this.style.disabledText);
@@ -85,7 +91,7 @@ class Day extends Component {
         onPress={this.onDayPress}
         onLongPress={this.onDayLongPress}>
         <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
-        <View style={{flexDirection: 'row'}}>{dot}</View>
+        <View style={{ flexDirection: 'row' }}>{dot}</View>
       </TouchableOpacity>
     );
   }

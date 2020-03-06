@@ -6,3 +6,4 @@ export { default as AgendaList } from './expandableCalendar/agendaList';
 export { default as CalendarProvider } from './expandableCalendar/calendarProvider';
 export { default as asCalendarConsumer } from './expandableCalendar/asCalendarConsumer';
 export { default as LocaleConfig } from 'xdate';
+export { default as WeekCalendar } from './expandableCalendar/weekCalendar';

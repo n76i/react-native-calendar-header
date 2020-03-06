@@ -260,8 +260,8 @@ class Calendar extends Component {
     return (
       <LinearGradient
         colors={['rgb(0,135,193)', 'rgb(0,211,186)']}
-        start={{ x: 1, y: 1 }}
-        end={{ x: 0, y: 0 }}>
+        start={{ x: 1, y: 0.5 }}
+        end={{ x: -0.2, y: 0.5 }}>
         <View style={[this.style.container, this.props.style, { backgroundColor: '#00000000' }]}>
           <CalendarHeader
             style={this.props.headerStyle}
@@ -269,7 +269,7 @@ class Calendar extends Component {
             hideArrows={this.props.hideArrows}
             month={this.state.currentMonth}
             addMonth={this.addMonth}
-            showIndicator={indicator}
+            showIndicator={false}
             firstDay={this.props.firstDay}
             renderArrow={this.props.renderArrow}
             monthFormat={this.props.monthFormat}

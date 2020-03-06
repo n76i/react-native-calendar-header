@@ -120,6 +120,9 @@ class AgendaList extends Component {
   }
 
   renderSectionHeader = ({section: {title}}) => {
+    // if (this.props.renderSectionHeader) {
+    //   return this.props.renderSectionHeader && this.props.renderSectionHeader({section: {title}});
+    // }
     const today = XDate().toString(this.props.dayFormat).toUpperCase();
     const date = XDate(title).toString(this.props.dayFormat).toUpperCase();
     const todayString = XDate.locales[XDate.defaultLocale].today || commons.todayString;
@@ -139,11 +142,11 @@ class AgendaList extends Component {
         ref={this.list}
         keyExtractor={this.keyExtractor}
         showsVerticalScrollIndicator={false}
-        stickySectionHeadersEnabled
+        stickySectionHeadersEnabled={this.stickySectionHeadersEnabled}
         onViewableItemsChanged={this.onViewableItemsChanged}
         viewabilityConfig={this.viewabilityConfig}
-        renderSectionHeader={this.renderSectionHeader}
-        onScroll={this.onScroll}
+        renderSectionHeader={this.props.renderSectionHeader}
+        // onScroll={this.onScroll}
         onMomentumScrollBegin={this.onMomentumScrollBegin}
         onMomentumScrollEnd={this.onMomentumScrollEnd}
         // onScrollToIndexFailed={(info) => { console.warn('onScrollToIndexFailed info: ', info); }}
