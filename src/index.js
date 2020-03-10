@@ -7,3 +7,7 @@ export { default as CalendarProvider } from './expandableCalendar/calendarProvid
 export { default as asCalendarConsumer } from './expandableCalendar/asCalendarConsumer';
 export { default as LocaleConfig } from 'xdate';
 export { default as WeekCalendar } from './expandableCalendar/weekCalendar';
+export { default as WeekList } from './expandableCalendar/WeekList';
+
+// dont try to use other component, just need this component
+export { default as Header } from './Header';

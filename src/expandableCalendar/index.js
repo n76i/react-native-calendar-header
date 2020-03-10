@@ -5,7 +5,8 @@ import {
   Animated,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
@@ -408,7 +409,7 @@ class ExpandableCalendar extends Component {
 
   renderWeekCalendar() {
     const { position } = this.state;
-    const {disableWeekScroll} = this.props;
+    const { disableWeekScroll } = this.props;
     const WeekComponent = disableWeekScroll ? Week : WeekCalendar;
 
     return (
@@ -447,12 +448,18 @@ class ExpandableCalendar extends Component {
         colors={['rgb(0,135,193)', 'rgb(0,211,186)']}
         start={{ x: 1, y: 0.5 }}
         end={{ x: -0.2, y: 0.5 }}>
-        <View style={{
+        <TouchableOpacity style={{
           alignItems: 'center',
           height: '100%'
-        }} pointerEvents={'none'}>
+        }} pointerEvents={'none'} onPress={() => {
+          if (this.state.position === POSITIONS.OPEN) {
+            this.bounceToPosition(this.closedHeight);
+          } else {
+            this.bounceToPosition(this.openHeight);
+          }
+        }}>
           <View style={this.style.knob} testID={CALENDAR_KNOB} />
-        </View>
+        </TouchableOpacity>
       </LinearGradient>
     );
   }

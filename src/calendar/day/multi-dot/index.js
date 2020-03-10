@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { shouldUpdate } from '../../../component-updater';
 
 import styleConstructor from './style';
+import moment from 'moment';
 
 class Day extends Component {
   static displayName = 'IGNORE';
@@ -50,14 +51,16 @@ class Day extends Component {
       // Filter out dots so that we we process only those items which have key and color property
       const validDots = marking.dots.filter(d => (d && d.color));
 
+      const isToday = moment(String(this.props.date.dateString), 'YYYY-MM-DD').isSame(moment(), 'day');
+
       return validDots.map((dot, index) => {
         return (
           <View key={dot.key ? dot.key : index} style={[baseDotStyle,
             {
               backgroundColor: marking.selected && dot.selectedDotColor ? '#0abde3' : dot.color,
-              width: marking.selected ? 2.5 : 4,
-              height: marking.selected ? 2.5 : 4,
-              borderRadius: marking.selected ? 1.25 : 2
+              width: (isToday || marking.selected) ? 2.5 : 4,
+              height: (isToday || marking.selected) ? 2.5 : 4,
+              borderRadius: (isToday || marking.selected) ? 1.25 : 2
             }]} />
         );
       });
@@ -87,11 +90,11 @@ class Day extends Component {
     return (
       <TouchableOpacity
         testID={this.props.testID}
-        style={containerStyle}
+        style={[containerStyle, { paddingTop: 0, justifyContent: 'center' }]}
         onPress={this.onDayPress}
         onLongPress={this.onDayLongPress}>
         <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
-        <View style={{ flexDirection: 'row' }}>{dot}</View>
+        {dot ? <View style={{ flexDirection: 'row' }}>{dot}</View> : null}
       </TouchableOpacity>
     );
   }
