@@ -118,7 +118,8 @@ export default class WeekList extends Component {
         style={{
           width,
           paddingTop: 2,
-          marginBottom: 8
+          marginBottom: 8,
+          height: 70
         }}
         ref={ref => this.ref = ref}
         pagingEnabled

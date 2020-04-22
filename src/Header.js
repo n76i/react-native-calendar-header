@@ -15,6 +15,7 @@ import { ExpandableCalendar, AgendaList, CalendarProvider, LocaleConfig } from '
 import WeekList, { weekDuration } from './expandableCalendar/WeekList';
 
 import moment from 'moment';
+import 'moment/locale/vi';
 
 const IS_IOS = Platform.OS === 'ios';
 const { width, height } = Dimensions.get('window');
@@ -30,11 +31,13 @@ LocaleConfig.defaultLocale = 'vn';
 export default class Header extends Component {
   constructor(props) {
     super(props);
+    moment.locale('vi');
     this.state = {
       current: moment().format('YYYY-MM-DD'),
       weekNumber: moment().week(),
-      header_title: moment().format('D MMMM').replace(/[a-z]/, c => c.toUpperCase()),
-      weekView: false,
+      // header_title: moment().format('D MMMM').replace(/[a-z]/, c => c.toUpperCase()),
+      header_title: `Tuần ${moment().week()}`,
+      weekView: true,
     }
   }
 
@@ -45,6 +48,7 @@ export default class Header extends Component {
   }
 
   updateHeaderTitle(date) {
+    moment.locale('vi');
     this.props.onDateChanged && this.props.onDateChanged(date);
     this.setState({ current: date, header_title: moment(date, 'YYYY-MM-DD').format('D MMMM').replace(/[a-z]/, c => c.toUpperCase()) })
   }
@@ -62,7 +66,7 @@ export default class Header extends Component {
 
   render() {
     const { current, header_title, weekView } = this.state;
-    const { sections } = this.props;
+    const { sections, disableFilter } = this.props;
 
     // console.log(width)
     return (
@@ -94,13 +98,16 @@ export default class Header extends Component {
             </TouchableOpacity>
             <TouchableOpacity style={styles.button_header}
               onPress={() => {
+                let week = null;
                 if (!weekView) {
-                  var title = weekDuration(this.state.current).title;
+                  week = weekDuration(this.state.current);
+                  var title = week.title;
                 } else {
                   var title = moment(current, 'YYYY-MM-DD').format('D MMMM').replace(/[a-z]/, c => c.toUpperCase())
                 }
 
                 this.setState({ weekView: !weekView, header_title: title });
+                this.props.onToggleView && this.props.onToggleView(!weekView, week);
               }}>
               <Image style={styles.image24} source={require('./img/iconActionViewDay24Px.png')} />
             </TouchableOpacity>
@@ -110,12 +117,12 @@ export default class Header extends Component {
               }}>
               <Image style={styles.image24} source={require('./img/iconActionSearch24Px.png')} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button_header}
+            {disableFilter ? null : (<TouchableOpacity style={styles.button_header}
               onPress={() => {
                 this.props.onFilterPress && this.props.onFilterPress();
               }}>
               <Image style={styles.image24} source={require('./img/iconContentFilterList24Px.png')} />
-            </TouchableOpacity>
+            </TouchableOpacity>)}
           </View>
           <CalendarProvider
             style={{
